@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="android.view.View"></import>
+        <variable
+            name="LoginViewModel"
+            type="com.phuoc.demomvvm.LoginViewModel" />
+    </data>
+
+    <LinearLayout
+        android:padding="16dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:textStyle="bold"
+            android:text="@string/login"
+            android:textSize="30sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </TextView>
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:text="@={LoginViewModel.email}"
+            android:id="@+id/edt_email"
+            android:layout_marginTop="40dp"
+            android:hint="@string/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </androidx.appcompat.widget.AppCompatEditText>
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:text="@={LoginViewModel.password}"
+            android:id="@+id/edt_pass"
+            android:layout_marginTop="40dp"
+            android:hint="@string/password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </androidx.appcompat.widget.AppCompatEditText>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:textColor="@{LoginViewModel.isSuccess ? @color/green : @color/red }"
+            android:text="@{LoginViewModel.messageLogin}"
+            android:textSize="20sp"
+            android:visibility="@{LoginViewModel.isShowMessage ? View.VISIBLE : View.GONE}"
+            android:layout_marginTop="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </androidx.appcompat.widget.AppCompatTextView>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:onClick="@{()->LoginViewModel.onClickLogin()}"
+            android:id="@+id/btn_click"
+            android:backgroundTint="#28B12E"
+            android:text="@string/login"
+            android:layout_marginTop="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </androidx.appcompat.widget.AppCompatButton>
+
+    </LinearLayout>
+
+</layout>
